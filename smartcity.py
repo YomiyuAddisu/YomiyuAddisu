@@ -128,3 +128,22 @@ encourage_label.pack(pady=(0, 20))
 
 input_frame = tk.Frame(root)
 input_frame.pack(padx=20)
+tk.Label(input_frame, text="Enter current hour (0–23):").grid(row=0, column=0, sticky="e", pady=2)
+hour_entry = tk.Entry(input_frame, width=10)
+hour_entry.grid(row=0, column=1, pady=2)
+
+tk.Label(input_frame, text="Enter traffic light color (red/green):").grid(row=1, column=0, sticky="e", pady=2)
+traffic_entry = tk.Entry(input_frame, width=10)
+traffic_entry.grid(row=1, column=1, pady=2)
+
+tk.Label(input_frame, text="Enter garbage level (0–100):").grid(row=2, column=0, sticky="e", pady=2)
+garbage_entry = tk.Entry(input_frame, width=10)
+garbage_entry.grid(row=2, column=1, pady=2)
+
+tk.Label(input_frame, text="Is it raining? (yes/no):").grid(row=3, column=0, sticky="e", pady=2)
+raining_entry = tk.Entry(input_frame, width=10)
+raining_entry.grid(row=3, column=1, pady=2)
+
+tk.Label(input_frame, text="Is fire detected? (yes/no):").grid(row=4, column=0, sticky="e", pady=2)
+fire_entry = tk.Entry(input_frame, width=10)
+fire_entry.grid(row=4, column=1, pady=2)
