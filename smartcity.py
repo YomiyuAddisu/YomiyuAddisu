@@ -66,3 +66,22 @@ def run_simulation():
     except ValueError as e:
         messagebox.showerror("Invalid input", str(e))
         return
+
+        traffic = TrafficLight(traffic_color)
+    street = StreetLight(hour)
+    garbage = GarbageSystem(garbage_level)
+    weather = WeatherSystem(raining)
+    fire_alert = FireAlert(fire)
+
+    # Clear previous output colors
+    for widget in output_frame.winfo_children():
+        widget.destroy()
+
+    # Time label
+    time_label = tk.Label(output_frame, text=f"🕒 Time: {hour:02d}:00", font=("Arial", 12, "bold"))
+    time_label.pack(anchor="w")
+
+    # Street Light display
+    street_color = "yellow" if street.is_on else "gray30"
+    street_label = tk.Label(output_frame, text=f"💡 Street Light: {street.display()}", fg=street_color, font=("Arial", 12))
+    street_label.pack(anchor="w")
