@@ -39,3 +39,30 @@ class FireAlert:
 
     def display(self):
         return "DETECTED" if self.fire else "SAFE"
+def run_simulation():
+    try:
+        hour = int(hour_entry.get())
+        if not (0 <= hour <= 23):
+            raise ValueError("Hour must be between 0 and 23.")
+
+        traffic_color = traffic_entry.get().strip().lower()
+        if traffic_color not in ("red", "green"):
+            raise ValueError("Traffic light color must be 'red' or 'green'.")
+
+        garbage_level = int(garbage_entry.get())
+        if not (0 <= garbage_level <= 100):
+            raise ValueError("Garbage level must be between 0 and 100.")
+
+        raining_input = raining_entry.get().strip().lower()
+        if raining_input not in ("yes", "no"):
+            raise ValueError("Raining input must be 'yes' or 'no'.")
+        raining = raining_input == "yes"
+
+        fire_input = fire_entry.get().strip().lower()
+        if fire_input not in ("yes", "no"):
+            raise ValueError("Fire input must be 'yes' or 'no'.")
+        fire = fire_input == "yes"
+
+    except ValueError as e:
+        messagebox.showerror("Invalid input", str(e))
+        return
