@@ -116,3 +116,15 @@ def run_simulation():
     fire_text = "🔥 Fire: DETECTED! 🚒 CALL EMERGENCY!" if fire_alert.fire else "🔥 Fire: Safe ✅"
     fire_label = tk.Label(output_frame, text=fire_text, fg=fire_color, font=("Arial", 12, "bold"))
     fire_label.pack(anchor="w")
+# --- Tkinter GUI Setup ---
+root = tk.Tk()
+root.title("Smart City Simulation")
+
+welcome_label = tk.Label(root, text="Welcome to AAiT Pre-engineering Section 10", font=("Arial", 16, "bold"))
+welcome_label.pack(pady=(10, 0))
+
+encourage_label = tk.Label(root, text="We encourage you to write with confidence", font=("Arial", 12))
+encourage_label.pack(pady=(0, 20))
+
+input_frame = tk.Frame(root)
+input_frame.pack(padx=20)
