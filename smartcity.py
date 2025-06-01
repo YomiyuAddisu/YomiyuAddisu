@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter import messagebox
 
 class TrafficLight:
-    def init(self, color):
+    def __init__(self, color):
         self.color = color.lower()
 
     def car_status(self):
@@ -12,14 +12,14 @@ class TrafficLight:
         return self.color.upper()
 
 class StreetLight:
-    def init(self, hour):
+    def __init__(self, hour):
         self.is_on = hour >= 18 or hour < 6
 
     def display(self):
         return "ON" if self.is_on else "OFF"
 
 class GarbageSystem:
-    def init(self, level):
+    def __init__(self, level):
         self.level = level
         self.status = "COLLECTING" if level > 80 else "NORMAL"
 
@@ -27,18 +27,20 @@ class GarbageSystem:
         return f"Level: {self.level}% | Status: {self.status}"
 
 class WeatherSystem:
-    def init(self, raining):
+    def __init__(self, raining):
         self.is_raining = raining
 
     def display(self):
         return "RAINING" if self.is_raining else "CLEAR"
 
 class FireAlert:
-    def init(self, detected):
+    def __init__(self, detected):
         self.fire = detected
 
     def display(self):
         return "DETECTED" if self.fire else "SAFE"
+
+
 def run_simulation():
     try:
         hour = int(hour_entry.get())
@@ -67,26 +69,26 @@ def run_simulation():
         messagebox.showerror("Invalid input", str(e))
         return
 
-        traffic = TrafficLight(traffic_color)
-    street = StreetLight(hour)
-    garbage = GarbageSystem(garbage_level)
-    weather = WeatherSystem(raining)
-    fire_alert = FireAlert(fire)
+    traffic = TrafficLight(traffic_color)
+    street = StreetLight(hour)
+    garbage = GarbageSystem(garbage_level)
+    weather = WeatherSystem(raining)
+    fire_alert = FireAlert(fire)
 
-    # Clear previous output colors
-    for widget in output_frame.winfo_children():
-        widget.destroy()
+    # Clear previous output colors
+    for widget in output_frame.winfo_children():
+        widget.destroy()
 
-    # Time label
-    time_label = tk.Label(output_frame, text=f"🕒 Time: {hour:02d}:00", font=("Arial", 12, "bold"))
-    time_label.pack(anchor="w")
+    # Time label
+    time_label = tk.Label(output_frame, text=f"🕒 Time: {hour:02d}:00", font=("Arial", 12, "bold"))
+    time_label.pack(anchor="w")
 
-    # Street Light display
-    street_color = "yellow" if street.is_on else "gray30"
-    street_label = tk.Label(output_frame, text=f"💡 Street Light: {street.display()}", fg=street_color, font=("Arial", 12))
-    street_label.pack(anchor="w")
+    # Street Light display
+    street_color = "yellow" if street.is_on else "gray30"
+    street_label = tk.Label(output_frame, text=f"💡 Street Light: {street.display()}", fg=street_color, font=("Arial", 12))
+    street_label.pack(anchor="w")
 
-# Traffic Light display and car status
+    # Traffic Light display and car status
     traffic_light_color = "green" if traffic.color == "green" else "red"
     traffic_label = tk.Label(output_frame, text=f"🚦 Traffic Light: {traffic.display()}", fg=traffic_light_color, font=("Arial", 12, "bold"))
     traffic_label.pack(anchor="w")
@@ -98,12 +100,12 @@ def run_simulation():
 
     # Garbage system display
     garbage_status_color = "orange" if garbage.status == "COLLECTING" else "green"
-    garbage_label = tk.Label(output_frame, text=f"🗑 Garbage Level: {garbage.level}%  |  Status: {garbage.status}", fg=garbage_status_color, font=("Arial", 12))
+    garbage_label = tk.Label(output_frame, text=f"🗑️ Garbage Level: {garbage.level}%  |  Status: {garbage.status}", fg=garbage_status_color, font=("Arial", 12))
     garbage_label.pack(anchor="w")
 
     # Weather display
     if weather.is_raining:
-        weather_text = "🌧 Weather: RAINING"
+        weather_text = "🌧️ Weather: RAINING"
         weather_color = "blue"
     else:
         weather_text = "☀️ Weather: CLEAR"
@@ -116,6 +118,8 @@ def run_simulation():
     fire_text = "🔥 Fire: DETECTED! 🚒 CALL EMERGENCY!" if fire_alert.fire else "🔥 Fire: Safe ✅"
     fire_label = tk.Label(output_frame, text=fire_text, fg=fire_color, font=("Arial", 12, "bold"))
     fire_label.pack(anchor="w")
+
+
 # --- Tkinter GUI Setup ---
 root = tk.Tk()
 root.title("Smart City Simulation")
@@ -128,6 +132,7 @@ encourage_label.pack(pady=(0, 20))
 
 input_frame = tk.Frame(root)
 input_frame.pack(padx=20)
+
 tk.Label(input_frame, text="Enter current hour (0–23):").grid(row=0, column=0, sticky="e", pady=2)
 hour_entry = tk.Entry(input_frame, width=10)
 hour_entry.grid(row=0, column=1, pady=2)
