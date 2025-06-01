@@ -85,3 +85,34 @@ def run_simulation():
     street_color = "yellow" if street.is_on else "gray30"
     street_label = tk.Label(output_frame, text=f"💡 Street Light: {street.display()}", fg=street_color, font=("Arial", 12))
     street_label.pack(anchor="w")
+
+# Traffic Light display and car status
+    traffic_light_color = "green" if traffic.color == "green" else "red"
+    traffic_label = tk.Label(output_frame, text=f"🚦 Traffic Light: {traffic.display()}", fg=traffic_light_color, font=("Arial", 12, "bold"))
+    traffic_label.pack(anchor="w")
+
+    car_status = traffic.car_status()
+    car_color = "green" if traffic.color == "green" else "red"
+    car_label = tk.Label(output_frame, text=f"🚗 Car: {car_status}", fg=car_color, font=("Arial", 12))
+    car_label.pack(anchor="w")
+
+    # Garbage system display
+    garbage_status_color = "orange" if garbage.status == "COLLECTING" else "green"
+    garbage_label = tk.Label(output_frame, text=f"🗑 Garbage Level: {garbage.level}%  |  Status: {garbage.status}", fg=garbage_status_color, font=("Arial", 12))
+    garbage_label.pack(anchor="w")
+
+    # Weather display
+    if weather.is_raining:
+        weather_text = "🌧 Weather: RAINING"
+        weather_color = "blue"
+    else:
+        weather_text = "☀️ Weather: CLEAR"
+        weather_color = "orange"
+    weather_label = tk.Label(output_frame, text=weather_text, fg=weather_color, font=("Arial", 12))
+    weather_label.pack(anchor="w")
+
+    # Fire alert display
+    fire_color = "red" if fire_alert.fire else "green"
+    fire_text = "🔥 Fire: DETECTED! 🚒 CALL EMERGENCY!" if fire_alert.fire else "🔥 Fire: Safe ✅"
+    fire_label = tk.Label(output_frame, text=fire_text, fg=fire_color, font=("Arial", 12, "bold"))
+    fire_label.pack(anchor="w")
