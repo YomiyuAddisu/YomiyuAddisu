@@ -147,3 +147,11 @@ raining_entry.grid(row=3, column=1, pady=2)
 tk.Label(input_frame, text="Is fire detected? (yes/no):").grid(row=4, column=0, sticky="e", pady=2)
 fire_entry = tk.Entry(input_frame, width=10)
 fire_entry.grid(row=4, column=1, pady=2)
+
+run_button = tk.Button(root, text="Run Simulation", command=run_simulation)
+run_button.pack(pady=15)
+
+output_frame = tk.Frame(root, bg="#f0f0f0", bd=2, relief="sunken")
+output_frame.pack(padx=20, pady=(0, 20), fill="both")
+
+root.mainloop()
